@@ -1,0 +1,7 @@
+install.packages("httpuv")
+install.packages("ggplot2")
+install.packages("shiny")
+
+library(httpuv)
+library(ggplot2)
+library(shiny)
