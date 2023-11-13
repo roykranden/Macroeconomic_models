@@ -1,7 +1,11 @@
 install.packages("httpuv")
 install.packages("ggplot2")
 install.packages("shiny")
+install.packages("rmarkdown")
+install.packages("knitr")
 
 library(httpuv)
 library(ggplot2)
 library(shiny)
+libary(rmarkdown)
+library(knitr)
