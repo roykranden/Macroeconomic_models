@@ -51,7 +51,7 @@ server <- function(input, output) {
   # Render the linear plot
   output$linear_plot <- renderPlot({
     ggplot(generate_data(), aes(x, y)) +
-      geom_line(color = "blue") +
+      geom_line(color = "red") +
       ggtitle("Simple Linear Function Plot") +
       labs(x = "X-axis", y = "Y-axis") +
       theme_minimal()
