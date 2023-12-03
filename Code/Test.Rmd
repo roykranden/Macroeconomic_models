@@ -1,0 +1,63 @@
+---
+title: "Interactive Parameters Chart"
+output:
+  html_document:
+    runtime: shiny
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# The Fisher Two-Period Optimal Consumption Problem
+This model analyzes the optimization problem of a consumer who faces **no uncertainty** and lives for two periods.
+
+
+```{r packages}
+
+# Load necessary libraries
+library(shiny)
+library(ggplot2)
+
+```
+
+```{r sample chart}
+# Define UI for application
+ui <- fluidPage(
+  titlePanel("Simple Linear Function Plot"),
+  
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput("gradient", "Gradient:", min = -5, max = 5, value = 2),
+      sliderInput("intercept", "Y-Intercept:", min = -10, max = 10, value = 3)
+    ),
+    mainPanel(
+      plotOutput("linear_plot")
+    )
+  )
+)
+
+# Define server logic
+server <- function(input, output) {
+  # Reactive function for generating data based on user input
+  generate_data <- reactive({
+    x_values <- seq(-10, 10, length.out = 100)
+    data.frame(
+      x = x_values,
+      y = input$gradient * x_values + input$intercept
+    )
+  })
+
+  # Render the linear plot
+  output$linear_plot <- renderPlot({
+    ggplot(generate_data(), aes(x, y)) +
+      geom_line(color = "blue") +
+      ggtitle("Simple Linear Function Plot") +
+      labs(x = "X-axis", y = "Y-axis") +
+      theme_minimal()
+  })
+}
+
+# Run the application
+shinyApp(ui, server)
+```

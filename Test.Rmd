@@ -1,0 +1,22 @@
+---
+title: "FTPM"
+output: html_document
+date: "2023-12-03"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# The Fisher Two-Period Optimal Consumption Problem
+This model analyzes the optimization problem of a consumer who faces **no uncertainty** and lives for two periods.
+
+
+```{r packages}
+
+# Load necessary libraries
+library(shiny)
+library(ggplot2)
+
+```
+
